@@ -1,0 +1,114 @@
+{
+  "project": {
+    "project_id": "huizhou-redevelopment",
+    "field_name": "惠州深水老油田二次开发",
+    "source_pattern": "liuhua"
+  },
+  "contributions": [
+    {
+      "category": "reserves_version",
+      "version": "2026.1",
+      "payload": {
+        "remaining_reserves_kl": "18500000",
+        "baseline_annual_oil_kl": "600000",
+        "natural_decline_percent": "9.5"
+      }
+    },
+    {
+      "category": "well_group_response",
+      "version": "2026.1",
+      "payload": {
+        "groups": [
+          {"well_group": "A1", "incremental_daily_oil_kl_per_well": "85", "response_confidence_percent": "80", "max_infill_wells": 6},
+          {"well_group": "B2", "incremental_daily_oil_kl_per_well": "60", "response_confidence_percent": "72", "max_infill_wells": 8},
+          {"well_group": "C3", "incremental_daily_oil_kl_per_well": "45", "response_confidence_percent": "65", "max_infill_wells": 10}
+        ]
+      }
+    },
+    {
+      "category": "water_cut_forecast",
+      "version": "2026.1",
+      "payload": {
+        "current_water_cut_percent": "72",
+        "annual_increase_points": "1.2",
+        "ceiling_percent": "90"
+      }
+    },
+    {
+      "category": "facility_bottleneck",
+      "version": "2026.1",
+      "payload": {
+        "liquid_capacity_kl_per_day": "6500",
+        "water_treatment_kl_per_day": "5200",
+        "oil_processing_kl_per_day": "1800"
+      }
+    },
+    {
+      "category": "shutdown_window",
+      "version": "2026.1",
+      "payload": {
+        "planned_shutdown_days_per_year": 21,
+        "windows": [
+          {"start_date": "2027-03-01", "end_date": "2027-03-21", "reason": "年度检修与水下设施巡检"}
+        ]
+      }
+    },
+    {
+      "category": "capex",
+      "version": "2026.1",
+      "payload": {
+        "well_cost_m_cny_per_well": "55",
+        "facility_upgrade_cost_m_cny": "95",
+        "contingency_percent": "10"
+      }
+    },
+    {
+      "category": "oil_price_assumption",
+      "version": "2026.1",
+      "payload": {
+        "base_price_cny_per_kl": "560",
+        "annual_escalation_percent": "1.5",
+        "variable_cost_cny_per_kl_liquid": "25",
+        "discount_rate_percent": "8"
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario_id": "infill-only",
+      "definition": {
+        "name": "仅井网调整（A1×6 + B2×8）",
+        "infill_wells": [
+          {"well_group": "A1", "count": 6},
+          {"well_group": "B2", "count": 8}
+        ],
+        "horizon_years": 10
+      }
+    },
+    {
+      "scenario_id": "infill-plus-upgrade",
+      "definition": {
+        "name": "井网调整 + 设施改造（液处理/水处理/油处理扩容）",
+        "infill_wells": [
+          {"well_group": "A1", "count": 6},
+          {"well_group": "B2", "count": 8}
+        ],
+        "facility_upgrade": {
+          "additional_liquid_kl_per_day": "3000",
+          "additional_water_treatment_kl_per_day": "2200",
+          "additional_oil_processing_kl_per_day": "400"
+        },
+        "horizon_years": 10
+      }
+    }
+  ],
+  "actual_year1": {
+    "horizon_year": 1,
+    "metrics": {
+      "actual_oil_kl": "730000",
+      "actual_water_cut_percent": "73.5",
+      "actual_capex_to_date_m_cny": "720",
+      "actual_oil_price_cny_per_kl": "505"
+    }
+  }
+}
